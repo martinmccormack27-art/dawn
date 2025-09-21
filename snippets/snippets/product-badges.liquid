@@ -1,0 +1,14 @@
+{%- assign tags_down = product.tags | join: '|' | downcase -%}
+{%- assign ages = '' -%}
+{%- for t in product.tags -%}
+  {%- assign td = t | downcase -%}
+  {%- if td contains '0-12m' or td contains '0–12m' or td contains '1-3y' or td contains '4-6y' or td contains '7-9y' -%}
+    {%- assign ages = ages | append: t | append: '|' -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{% if ages != '' %}
+  <div class="mm-badge mm-badge--age">
+    {{ ages | split: '|' | uniq | join: ' · ' }}
+  </div>
+{% endif %}
