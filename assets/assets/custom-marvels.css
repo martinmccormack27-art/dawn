@@ -1,0 +1,77 @@
+/* ===== Mini Marvels – Brand System ===== */
+:root {
+  /* Palette */
+  --mm-mint: #A8DADC;      /* primary */
+  --mm-peach: #F6B6A7;     /* secondary / hover */
+  --mm-cream: #FAF9F6;     /* soft bg */
+  --mm-yellow: #FDE68A;    /* accent (sparingly) */
+  --mm-text: #333333;      /* primary text */
+  --mm-text-2: #777777;    /* secondary text */
+
+  /* Radii & shadows */
+  --mm-radius: 16px;
+  --mm-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Base tweaks */
+body { color: var(--mm-text); background: var(--mm-cream); }
+a { color: var(--mm-text); }
+a:hover { opacity:.85 }
+
+/* Buttons */
+.button, .shopify-payment-button__button--unbranded, button[type="submit"], .btn {
+  background: var(--mm-mint);
+  color: #0b2a2a;
+  border-radius: var(--mm-radius);
+  border: 0;
+  padding: 12px 18px;
+  transition: transform .08s ease, background .2s ease;
+}
+.button:hover, .btn:hover, .shopify-payment-button__button--unbranded:hover {
+  background: var(--mm-peach);
+  transform: translateY(-1px);
+}
+
+/* Badges (used on cards + PDP) */
+.mm-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background: white; border:1px solid #eaeaea; color: var(--mm-text);
+  border-radius: 999px; padding:6px 10px; font-size:12px; line-height:1;
+  box-shadow: var(--mm-shadow);
+}
+.mm-badge--age  { background: var(--mm-yellow); border-color: #f9d76a; }
+.mm-badge--safe { background: #eaf8f7; border-color: #d6eee9; }
+
+/* Hero */
+.mm-hero {
+  border-radius: 28px; overflow: hidden; box-shadow: var(--mm-shadow);
+  background: linear-gradient(120deg, rgba(168,218,220,.25), rgba(246,182,167,.25));
+}
+.mm-hero__inner {
+  padding: clamp(24px, 6vw, 56px);
+  display:grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items:center;
+}
+@media(max-width: 990px){ .mm-hero__inner { grid-template-columns: 1fr; } }
+.mm-hero__title { font-size: clamp(28px, 5vw, 48px); margin:0 0 10px; }
+.mm-hero__sub   { color: var(--mm-text-2); margin-bottom:18px; }
+.mm-hero__ages { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.mm-hero__img { border-radius: 24px; overflow:hidden; }
+
+/* PDP trust row */
+.mm-trust {
+  display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:16px;
+}
+@media(max-width: 750px){ .mm-trust { grid-template-columns: 1fr; } }
+.mm-trust__item { background:white; border:1px solid #eee; border-radius:16px; padding:12px 14px; display:flex; gap:10px; align-items:center; }
+
+/* Size guide modal */
+.mm-modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.38); display:none; z-index:9999; }
+.mm-modal { position:fixed; inset: 50% auto auto 50%; transform: translate(-50%,-50%); width:min(680px,92vw);
+  background:white; border-radius:20px; box-shadow: var(--mm-shadow); padding:22px; display:none; z-index:10000; }
+.mm-modal__title { font-size:20px; margin:0 0 8px; }
+.mm-modal__close { background:transparent; border:0; font-size:20px; cursor:pointer; margin-left:auto; }
+.mm-modal--open { display:block; }
+.mm-modal-backdrop--open { display:block; }
+
+/* Cart drawer reassurance */
+.mm-cart-reassure { margin-top:12px; border-top:1px dashed #e7e7e7; padding-top:12px; color:var(--mm-text-2); font-size:13px; }
